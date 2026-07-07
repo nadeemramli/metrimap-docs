@@ -10,7 +10,8 @@
     "type-check": "fumadocs-mdx && next typegen && tsc --noEmit",
     "types:check": "fumadocs-mdx && next typegen && tsc --noEmit",
     "postinstall": "fumadocs-mdx",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check": "node scripts/check-content.mjs"
   },
   "dependencies": {
     "cnfast": "^0.0.8",
