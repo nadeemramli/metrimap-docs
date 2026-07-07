@@ -1,11 +1,61 @@
 ---
 title: "Metric mapping basics"
-description: "How to move from a business goal to a metric tree."
-owner: content (CVS-294)
+description: "How to move from a business goal to a metric tree you can actually use."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-294)" priority="P1">
-Goal → outcome metric → drivers; build your first tree. Ends with a next action.
-</Stub>
+A **metric map** answers one question: *what actually moves the number I care about?*
+This lesson shows you how to build one from a goal, top-down.
+
+## 1. Name the outcome
+
+Start with a single outcome — the number the business is really about. For our
+subscription company that's **MRR** (monthly recurring revenue). On the canvas this
+is a **Core/Value** card.
+
+<Callout title="Pick one outcome to start">
+  Resist mapping everything at once. One clear outcome gives the map a spine; you can
+  branch out later.
+</Callout>
+
+## 2. Break it into its parts
+
+Ask: *what does this number add up from?* MRR is:
+
+```
+MRR = New MRR + Expansion MRR − Churned MRR
+```
+
+Add a **Data/Metric** card for each part and connect them to MRR. Because they add up
+to the whole, these are **compositional** relationships.
+
+## 3. Find the drivers underneath
+
+For each part, ask *what moves this?* — and stop when you reach something you can act
+on or measure.
+
+```
+New MRR  ← Signups × Trial-to-paid rate × Average price
+Churned MRR  ← Customers × Churn rate
+```
+
+These are usually **causal** relationships. You've now gone from one outcome to the
+handful of levers that actually move it.
+
+## 4. Keep it honest
+
+- Map what's *true*, not what's tidy. If you're unsure a link exists, mark low
+  confidence and attach [evidence](/docs/concepts/canvases#evidence) later.
+- Stop at levers you can influence or measure — a map you can't act on is a diagram.
+
+## What you've learned
+
+A metric map is an outcome, its parts, and the drivers beneath them — connected with
+typed relationships so the logic is explicit.
+
+## Next step
+
+Your map shows *what moves the number*. Next, decide *what you'll do about it*:
+[Strategy breakdown](/docs/learn/strategy-breakdown).

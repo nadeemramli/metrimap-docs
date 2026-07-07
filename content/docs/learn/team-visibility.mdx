@@ -1,11 +1,49 @@
 ---
 title: "Team visibility"
-description: "How departments/groups get the right operating view."
-owner: content (CVS-294)
+description: "How departments and groups get an operating view scoped to what they should see."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-294)" priority="P1">
-Give each group the dashboard/view scoped to what they should see.
-</Stub>
+Different teams need different views of the same business — and some numbers aren't
+for everyone. Canvasm lets you serve both from one canvas.
+
+## One map, many views
+
+You don't keep a separate spreadsheet per team. You build the map once and let
+**groups** and **access tags** decide who sees what
+(see [Groups & visibility](/docs/concepts/groups-and-visibility)).
+
+## Give each team its operating view
+
+1. **Define groups** for your audiences — Finance, Marketing, Exec, an external
+   partner.
+2. **Tag sensitive cards** with an access tag whose audience is only the groups
+   allowed to see them (e.g. cost and margin cards visible to Finance and Exec).
+3. **Scope a dashboard** to an audience so it shows only that audience's permitted
+   metrics.
+
+Now Marketing opens a dashboard full of funnel metrics; Finance opens one with
+margin; the Exec view spans both — all from the same canvas.
+
+## Restricted stays restricted
+
+When you [share](/docs/guides/share-views) a canvas or dashboard, anything outside the
+viewer's audience is **redacted** — filtered out of the view and any embed. As an
+owner you can see *"N restricted metrics are hidden for this audience"* so there are
+no surprises.
+
+<Callout title="Role and view are different">
+  Being an Editor lets someone *change* the canvas; it doesn't automatically let them
+  *see* restricted cards. Capability and visibility are set separately.
+</Callout>
+
+## What you've learned
+
+Build once, then use groups + access tags to give each team a scoped operating view —
+without leaking restricted numbers through a share.
+
+## Next step
+
+Put it all together on a real example: [Build a growth map](/docs/learn/example-growth-map).

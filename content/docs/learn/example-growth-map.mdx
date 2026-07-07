@@ -1,11 +1,83 @@
 ---
 title: "Example: build a growth map"
-description: "A full walkthrough building a growth/profit map from scratch."
-owner: content (CVS-294)
+description: "A full walkthrough — map, strategy breakdown, and dashboard review — on one subscription business."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-294)" priority="P1">
-End-to-end worked example incl. strategy breakdown + dashboard review.
-</Stub>
+This lesson ties the whole track together. We'll build a growth map for **Acme**, a
+subscription business, break down a strategy on it, and run a review. Follow along in
+the app at [use.canvasm.app](https://use.canvasm.app).
+
+## The situation
+
+Acme wants to **grow MRR by 15% this quarter**. Today MRR is flat: new revenue is
+healthy but churn is quietly eating it.
+
+## Step 1 — Map the outcome and its parts
+
+Create a canvas *"Acme growth"*. Add a **Core/Value** card **MRR**, then its
+compositional parts:
+
+```
+MRR = New MRR + Expansion MRR − Churned MRR
+```
+
+## Step 2 — Add the drivers
+
+Add the levers under each part (causal links):
+
+```
+New MRR        ← Signups × Trial-to-paid × Price
+Expansion MRR  ← Accounts × Upgrade rate
+Churned MRR    ← Customers × Churn rate
+```
+
+Acme now has a map that shows churn sits on the same footing as new revenue —
+already a more honest picture than "MRR is flat."
+
+## Step 3 — Break down the strategy
+
+Objective: **+15% MRR**. Pillars: *Win more*, *Grow accounts*, *Lose fewer*. Acme
+picks two bets to start:
+
+- **Action: Ship annual billing** (pillar: Grow accounts)
+  - Target: **Expansion MRR** (increase, +3,000/mo)
+  - Leading: annual-plan adoption
+  - Guardrail: **churn rate** (must not rise)
+  - Baseline: May 2026 · Measure: Jul–Sep 2026 · Confidence: medium
+- **Hypothesis: A better onboarding email lifts activation** (pillar: Lose fewer)
+  - Target: **Trial-to-paid rate** (increase)
+  - Guardrail: support tickets (must not spike)
+  - Baseline: May 2026 · Measure: Jun–Aug 2026 · Confidence: low
+
+Each bet is now an [impact contract](/docs/concepts/strategy-impact) — a checkable
+expectation, not a hope.
+
+## Step 4 — Review on a cadence
+
+Build a [dashboard](/docs/concepts/dashboards) with an MRR KPI, a *New vs Churned MRR*
+line chart, and the two target metrics. Then run the
+[cadence](/docs/learn/dashboard-cadence):
+
+- **Weekly:** read trends, check the impact badges on Expansion MRR and Trial-to-paid,
+  confirm churn (the guardrail) isn't rising. Leave an evidence note.
+- **Monthly:** when the measurement windows close, mark each contract **won**,
+  **lost**, or **inconclusive**, and decide the next move.
+
+Suppose annual billing lands: Expansion MRR is up +3,400/mo and churn held. Mark that
+contract **won**, attach the analysis as evidence, and roll the pattern into the next
+pillar.
+
+## What you built
+
+A map that shows what moves MRR, two measurable bets against it, and a review rhythm
+that will tell you — with evidence — whether Acme hits +15%.
+
+## Next steps
+
+<Cards>
+  <Card title="Do it for real" href="/docs/guides/create-a-canvas" description="Step-by-step guides for each part." />
+  <Card title="Go deeper on the system" href="/docs/product-system" description="How strategy-to-impact and group-to-dashboard work under the hood." />
+</Cards>
