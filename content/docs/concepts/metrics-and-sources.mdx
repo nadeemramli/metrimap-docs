@@ -1,11 +1,63 @@
 ---
 title: "Metrics & sources"
-description: "The metric catalog, source-backed vs calculated values, and lineage."
-owner: content (CVS-293)
+description: "The metric catalog, source-backed vs calculated values, periods, and lineage."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-293)" priority="P1">
-Tracked metrics catalog, source-backed vs calculated values, the value store, and lineage.
-</Stub>
+A card becomes measurable when it carries **values over time**. Canvasm keeps those
+values in a shared **catalog** so the same metric reads the same everywhere.
+
+## Tracked metrics and the catalog
+
+When a Data/Metric card matters enough to follow, you **promote it to a tracked
+metric**. A tracked metric is catalogued at the workspace level and owns a **value
+series** — a list of values by period.
+
+Because the series lives in the catalog (not on a single card), the same metric can
+appear on several canvases and read identically. Update **MRR** once and every
+canvas and dashboard referencing it updates.
+
+## Periods
+
+Values are recorded per **period** — usually a month like `2026-06`. A series is
+just those period/value pairs:
+
+```
+MRR
+  2026-04  118000
+  2026-05  121500
+  2026-06  124000
+```
+
+## Source-backed vs calculated values
+
+Values arrive two ways:
+
+- **Source-backed** — brought in from a data source: a native
+  [connector](/docs/reference/connectors), or pushed from your own pipeline via the
+  [API](/docs/reference/api) or an [agent over MCP](/docs/reference/mcp). These
+  reflect real system-of-record numbers.
+- **Calculated** — derived on the canvas from other cards through a
+  **Deterministic** or **Compositional** relationship. For example, MRR can be
+  calculated as New + Expansion − Churned.
+
+<Callout title="Keep one source of truth">
+  Prefer source-backed values for base metrics and calculated values for roll-ups.
+  That way the map's math is explicit and the inputs stay honest.
+</Callout>
+
+## Lineage
+
+Every source-backed value keeps its **lineage** — where it came from and when it was
+observed. Lineage is what lets you trust a number and trace it back to its origin
+instead of guessing who typed it.
+
+## Next steps
+
+<Cards>
+  <Card title="Connect data" href="/docs/reference/connectors" description="Bring values in automatically." />
+  <Card title="Push values via API" href="/docs/reference/api" description="Send metrics from your own pipeline." />
+  <Card title="Dashboards" href="/docs/concepts/dashboards" description="Turn tracked metrics into widgets." />
+</Cards>

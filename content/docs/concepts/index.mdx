@@ -1,11 +1,48 @@
 ---
 title: "Concepts"
 description: "The Canvasm product model in plain language — start here before the guides and reference."
-owner: content (CVS-293)
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-293)" priority="P1">
-Overview/concept map of the model with links to each concept page and how they fit together.
-</Stub>
+Canvasm (also called **Metrimap**) is built on a small set of ideas. Learn these
+six and the rest of the product — guides, dashboards, connectors, the agent
+API — will make sense.
+
+## The model in one picture
+
+```
+Workspace  (your team's account)
+└─ Canvas  (one metric map)
+   ├─ Cards        outcomes, metrics, actions, hypotheses
+   ├─ Relationships  typed links between cards
+   ├─ Metrics      cards promoted to tracked, source-backed series
+   ├─ Dashboard    widgets built from those metrics
+   ├─ Strategy     actions/hypotheses with impact contracts
+   └─ Visibility   groups + access tags decide who sees what
+```
+
+## The building blocks
+
+<Cards>
+  <Card title="Organizations & workspaces" href="/docs/concepts/organizations-workspaces" description="The account container your canvases and team live in." />
+  <Card title="Canvases" href="/docs/concepts/canvases" description="The metric map: cards, relationships, groups, evidence, comments." />
+  <Card title="Metrics & sources" href="/docs/concepts/metrics-and-sources" description="Tracked metrics, source-backed vs calculated values, lineage." />
+  <Card title="Dashboards" href="/docs/concepts/dashboards" description="Widgets and views built from your metrics." />
+  <Card title="Strategy & impact" href="/docs/concepts/strategy-impact" description="Tie actions and hypotheses to the metrics they should move." />
+  <Card title="Groups & visibility" href="/docs/concepts/groups-and-visibility" description="Give each team the right view; keep restricted numbers restricted." />
+</Cards>
+
+## A running example
+
+Throughout these docs we model one business: a **subscription company** whose main
+outcome is **monthly recurring revenue (MRR)**. MRR is driven by new, expansion,
+and churned revenue; those are driven by acquisition and activation further down.
+We'll grow that map as we go.
+
+## Next steps
+
+New to Canvasm? Do the [Quickstart](/docs/quickstart) first, then read
+[Canvases](/docs/concepts/canvases). Ready to build for real? Head to the
+[Guides](/docs/guides).

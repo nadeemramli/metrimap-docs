@@ -1,11 +1,70 @@
 ---
 title: "Canvases"
-description: "Metric maps: nodes (cards), edges (relationships), groups, evidence, and comments."
-owner: content (CVS-293)
+description: "The metric map: cards, typed relationships, groups, evidence, and comments."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-293)" priority="P1">
-Cards (Core/Value, Data/Metric, Work/Action, Ideas/Hypothesis), typed relationships, groups, evidence, comments.
-</Stub>
+A **canvas** is one metric map — an infinite space where you lay out what you care
+about and how the pieces connect. Most work in Canvasm happens on a canvas.
+
+## Cards
+
+Each box on a canvas is a **card**. A card has a **category** that says what kind
+of thing it is:
+
+| Category | Use it for | Example |
+|---|---|---|
+| **Core / Value** | An outcome you're trying to move | MRR, Profit |
+| **Data / Metric** | Something you measure | New MRR, Signups, CAC |
+| **Work / Action** | A thing your team does | "Launch annual plans" |
+| **Ideas / Hypothesis** | A bet you want to test | "Onboarding email lifts activation" |
+| **Metadata** | Notes and context | A segment definition |
+
+In the MRR example, **MRR** is a Core/Value card and **New MRR**, **Expansion MRR**,
+and **Churned MRR** are Data/Metric cards.
+
+## Relationships
+
+A **relationship** is a typed link between two cards — it says *how* one relates to
+another. Canvasm has four types:
+
+| Type | Meaning |
+|---|---|
+| **Deterministic** | A defined calculation: the source fully computes the target |
+| **Compositional** | The target is made up of its sources (parts of a whole) |
+| **Causal** | The source is believed to cause a change in the target |
+| **Probabilistic** | An observed or estimated statistical link |
+
+You can add **confidence**, a **weight**, and **notes** to a relationship to record
+how sure you are and why. New, Expansion, and Churned MRR relate to MRR
+**compositionally** (they sum to it); a driver like *activation rate* might relate
+to New MRR **causally**.
+
+## Groups
+
+A **group** visually collects related cards on a canvas — for example an
+"Acquisition" group around your top-of-funnel metrics. Groups keep large maps
+legible and are also a unit you can attach visibility to
+(see [Groups & visibility](/docs/concepts/groups-and-visibility)).
+
+## Evidence
+
+**Evidence** is the proof behind a card or a relationship — attach an experiment,
+analysis, notebook, external research, or a user interview so the "why" travels
+with the map. Evidence turns a canvas from a diagram into a defensible model. See
+[Evidence & governance](/docs/product-system/evidence-and-governance).
+
+## Comments
+
+Team members can leave **comments** on cards to discuss in context. Commenting
+needs at least the Commenter role
+(see [Organizations & workspaces](/docs/concepts/organizations-workspaces)).
+
+## Next steps
+
+<Cards>
+  <Card title="Metrics & sources" href="/docs/concepts/metrics-and-sources" description="Turn a Data/Metric card into a tracked metric with real values." />
+  <Card title="Create a canvas" href="/docs/guides/create-a-canvas" description="Hands-on: build one." />
+</Cards>
