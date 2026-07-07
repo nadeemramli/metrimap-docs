@@ -32,6 +32,7 @@ Other scripts:
 npm run build        # production build — must pass before every PR
 npm run type-check   # fumadocs-mdx + next typegen + tsc --noEmit
 npm run lint         # eslint
+npm run check        # content quality gate: frontmatter + internal links
 npm start            # serve the production build on :3001
 ```
 
@@ -80,8 +81,9 @@ lastReviewed: 2026-07-08     # YYYY-MM-DD of the last content review
 ```
 
 `title` and `description` are validated by Fumadocs' schema and the build fails
-without them. `owner`, `status`, and `lastReviewed` are project conventions used
-for content quality gates (see [CVS-297] and the quality-gates doc).
+without them. `owner`, `status`, and `lastReviewed` are enforced by the content
+quality gate (`npm run check`) — see [`docs/quality-gates.md`](docs/quality-gates.md),
+which also covers search, the feedback footer, and metadata/sitemap/robots/OG.
 
 ### Content conventions
 
