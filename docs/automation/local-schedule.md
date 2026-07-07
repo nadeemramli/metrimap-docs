@@ -1,18 +1,24 @@
 # Run the docs-drift check on your Claude subscription (local schedule)
 
-There are two ways to run the [weekly docs-drift check](docs-drift-check.md). Pick one
-(or run both):
+The [weekly docs-drift check](docs-drift-check.md) runs from **local cron** on your
+machine, against your Claude Code subscription — no Anthropic API key, no per-run API
+charge:
 
-| | GitHub Actions (`.github/workflows/docs-drift.yml`) | Local cron (this doc) |
-|---|---|---|
-| **Auth** | Anthropic **API key** (`ANTHROPIC_API_KEY` secret) | Your **Claude Code subscription** — no API key |
-| **Runs when** | Always, in the cloud | Only while **this machine is awake + WSL running** |
-| **Cost** | Small per-run API charge | Counted against your Claude subscription limits |
-| **Best for** | Reliability, never misses a week | Avoiding API billing; using your existing plan |
+| | Local cron (this doc) |
+|---|---|
+| **Auth** | Your **Claude Code subscription** — no API key |
+| **Runs when** | Only while **this machine is awake + WSL running** |
+| **Cost** | Counted against your Claude subscription limits |
 
-The local option runs the same `claude` CLI you use interactively, so it bills your
-subscription, not the API. The only real trade-off: **if the computer is asleep at the
-scheduled time, that run is skipped** (the next week's run still fires).
+It runs the same `claude` CLI you use interactively, so it bills your subscription, not
+the API. The only real trade-off: **if the computer is asleep at the scheduled time, that
+run is skipped** (the next week's run still fires).
+
+> A cloud **GitHub Actions** variant used to live at `.github/workflows/docs-drift.yml`.
+> It was removed because it required an `ANTHROPIC_API_KEY` secret that was never set, so
+> it would have failed every week. If you later want an always-on cloud run that never
+> misses a week, re-add a scheduled workflow that runs the same playbook and set that
+> secret — see the fallback note below.
 
 ## Setup (WSL / Linux cron)
 
@@ -54,8 +60,9 @@ is missed. Options:
   - Action → Program: `wsl.exe`
   - Arguments: `-e bash -lc "$HOME/workspace/github.com/nadeemramli/metrimap-docs/scripts/docs-drift-local.sh"`
   - Trigger: Weekly, Monday 08:17; check **"Run task as soon as possible after a scheduled start is missed."**
-- Or just **keep the GitHub Actions workflow enabled as the always-on fallback** and treat
-  local cron as a bonus. Running both is fine — the check dedupes into one weekly issue.
+- Or add an always-on **cloud** fallback: a scheduled GitHub Actions workflow that runs
+  the same playbook (needs an `ANTHROPIC_API_KEY` repo secret). Running both is fine — the
+  check dedupes into one weekly issue.
 
 ## Keeping it running (usage & limits)
 

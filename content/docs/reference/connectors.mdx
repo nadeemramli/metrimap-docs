@@ -14,8 +14,9 @@ and they share one data model.
 - **Agent / API push — Current.** Your agent (over [MCP](/docs/reference/mcp)) or your
   pipeline (over the [API](/docs/reference/api)) fetches data wherever it lives and
   pushes values into Canvasm. Available today and the most flexible path.
-- **Native connectors — Planned / rolling out.** Canvasm connects directly to a source,
-  fetches on a schedule, and normalizes the data for you. Rolling out source by source.
+- **Native connectors — rolling out.** Canvasm connects directly to a source,
+  fetches on a schedule, and normalizes the data for you. **Google Analytics 4 is
+  available now**; more sources roll out one by one.
 
 ## One canonical data model
 
@@ -32,20 +33,20 @@ which is what gives every source-backed value its
 
 ## Native connector status
 
-<Callout type="info" title="Planned">
-  **Google Analytics 4** is the first native connector and is in setup. Additional
-  sources (payments, commerce, product analytics) are planned and will light up as
-  each connector ships. Until a connector is marked Current, use agent/API push for
-  that source.
+<Callout type="info" title="Current">
+  **Google Analytics 4** is live as the first native connector — authorize with OAuth
+  and Canvasm pulls from the GA4 Data API. Additional sources (payments, commerce,
+  product analytics) are planned and will light up as each connector ships. Until a
+  connector is marked Current, use agent/API push for that source.
 </Callout>
 
-## Connecting an account (how it will work)
+## Connecting an account
 
-When native connectors are available, you'll connect a source under **Connected
-accounts** in settings: authorize with the provider (OAuth) or enter an API key, and
-Canvasm stores those credentials securely on the server — the browser only ever sees a
-connection's **status**, never the tokens. Canvasm then fetches on a schedule and
-maps the results onto your metrics.
+You connect a source under **Connected accounts** in settings: authorize with the
+provider (OAuth — as with Google Analytics 4) or enter an API key, and Canvasm stores
+those credentials securely on the server — the browser only ever sees a connection's
+**status**, never the tokens. Canvasm then fetches on a schedule and maps the results
+onto your metrics.
 
 ## Next steps
 
