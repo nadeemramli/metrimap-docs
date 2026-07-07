@@ -1,11 +1,61 @@
 ---
 title: "Strategy to impact"
-description: "How actions/hypotheses link to target, leading, and guardrail metrics."
-owner: content (CVS-295)
+description: "How actions and hypotheses link to target, leading, and guardrail metrics — and how impact is traced."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-295)" priority="P1">
-Actions/hypotheses → target/leading/guardrail metric links; how impact is traced.
-</Stub>
+Strategy-to-impact is the loop that connects the **work** on a canvas to the
+**metrics** it's meant to move, and lets you trace whether it worked.
+
+## The link
+
+A strategy card — a **Work/Action** or an **Ideas/Hypothesis** — carries an
+[impact contract](/docs/product-system/impact-contracts) that links it to metrics in
+three roles:
+
+```
+        ┌──────────────────────────────┐
+        │  Action / Hypothesis          │
+        │  (carries an impact contract) │
+        └───────────────┬──────────────┘
+              target │ leading │ guardrail
+                     ▼         ▼         ▼
+                 Metric     Metric     Metric
+             (main move)  (early)   (must not worsen)
+```
+
+- **Target** — the metric the work primarily intends to move.
+- **Leading** — an earlier indicator you expect to move first, so you're not waiting
+  on the lagging outcome to know if you're on track.
+- **Guardrail** — a metric that must not degrade; it keeps a win honest.
+
+A metric reference can point at a **tracked metric** (catalogued, shared) or a **card**
+on the canvas.
+
+## Where it surfaces: impact badges
+
+On a [dashboard](/docs/concepts/dashboards), each metric widget shows **impact
+badges** — a compact count and status of the strategy items linked to that metric. The
+overlay lists each item's title, owner, expected change, measurement window, and
+current status, and links to its **impact trace**. A review can then answer: *what
+bets are on this metric, and are they working?*
+
+## The impact trace
+
+The **trace** is the path from a bet to its result: the contract's expectation, the
+metric's actual movement across the measurement window, and the final status
+(**won / lost / inconclusive**). Tracing is how a claim becomes evidence.
+
+<Callout title="Status is earned, not assigned">
+  A contract moves draft → planned → measuring, and only becomes won/lost/inconclusive
+  once its measurement window closes and the metric is read against the baseline.
+</Callout>
+
+## Next steps
+
+<Cards>
+  <Card title="Impact contracts" href="/docs/product-system/impact-contracts" description="Every field of the contract, and how measurement works." />
+  <Card title="Strategy & impact (concept)" href="/docs/concepts/strategy-impact" description="The plain-language version." />
+</Cards>

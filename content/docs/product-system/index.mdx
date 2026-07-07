@@ -1,11 +1,44 @@
 ---
 title: "Product System"
-description: "The operating model behind Canvasm: strategy-to-impact and group-to-dashboard."
-owner: content (CVS-295)
+description: "The operating model behind Canvasm — how strategy becomes impact and how groups become dashboards."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-295)" priority="P1">
-Overview of the operating model connecting strategy, impact, groups, and governance.
-</Stub>
+The [Concepts](/docs/concepts) describe the parts. This section describes the
+**system** — the two loops that make Canvasm an operating tool, not just a diagram:
+
+```
+   Strategy ──▶ Impact                Group ──▶ Dashboard
+   actions/hypotheses                 audiences + access tags
+        │                                   │
+        ▼                                   ▼
+   target / leading / guardrail        scoped operating views
+   metrics, measured over a window     that respect visibility
+```
+
+## The two loops
+
+<Cards>
+  <Card title="Strategy to impact" href="/docs/product-system/strategy-to-impact" description="Link work to the metrics it should move, and trace the result." />
+  <Card title="Impact contracts" href="/docs/product-system/impact-contracts" description="The measurable statement each bet carries — field by field." />
+  <Card title="Group to dashboard" href="/docs/product-system/group-to-dashboard" description="Turn audiences and visibility into per-team operating views." />
+  <Card title="Evidence & governance" href="/docs/product-system/evidence-and-governance" description="How notes, evidence, and access rules support the cadence." />
+</Cards>
+
+## How they connect
+
+Strategy-to-impact produces **impact badges** on dashboard metric widgets;
+group-to-dashboard decides **which** widgets each audience sees. Together they mean a
+team's review shows exactly the metrics they're allowed to see *and* the bets active
+on them.
+
+<Callout title="Also on canvasm.app">
+  The public site explains this system at a glance; these pages are the deeper
+  reference behind it.
+</Callout>
+
+## Next step
+
+Start with [Strategy to impact](/docs/product-system/strategy-to-impact).
