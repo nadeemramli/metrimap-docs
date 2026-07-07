@@ -46,5 +46,5 @@ jobs:
         run: |
           claude -p "Follow the playbook in docs/automation/docs-drift-check.md exactly. Report only; do not edit any files." \
             --model claude-opus-4-8 \
-            --allowedTools "Bash(gh:*),Bash(date:*),Bash(grep:*),Read,Grep,Glob" \
+            --allowedTools "Bash,Read,Grep,Glob" \
             --output-format text
