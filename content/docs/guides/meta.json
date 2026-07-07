@@ -1,0 +1,5 @@
+{
+  "title": "Guides",
+  "icon": "SquareChevronRight",
+  "pages": ["index", "create-a-canvas", "add-metrics", "connect-data", "build-dashboards", "share-views"]
+}

@@ -1,0 +1,78 @@
+---
+title: "Quickstart"
+description: "Build your first canvas in about 10 minutes — a small metric map with real numbers."
+owner: docs
+status: draft
+lastReviewed: 2026-07-08
+---
+
+This quickstart builds a small **metric map** for a subscription business and puts
+one real number on it. You'll end with a canvas you can grow into your own model.
+It takes about 10 minutes.
+
+<Callout title="You'll need">
+  A Canvasm account. Sign in at [use.canvasm.app](https://use.canvasm.app). No data
+  connection is required for this quickstart — you'll type one value by hand.
+</Callout>
+
+## The example
+
+We'll model a simple question: **what drives monthly recurring revenue (MRR)?**
+
+```
+        MRR  (outcome)
+         ▲
+   ┌─────┼─────┐
+  New  Expansion  Churn   (drivers)
+```
+
+## 1. Create a canvas
+
+In the app, create a new **canvas** (a canvas is one metric map). Give it a name
+like *"MRR model"*. You'll land on an infinite canvas where each box is a **card**.
+
+<Callout type="info">
+  A **card** is a node on the canvas. Cards have a category — the ones you'll use
+  here are **Core/Value** (an outcome you care about) and **Data/Metric** (a
+  measurable input).
+</Callout>
+
+## 2. Add the outcome
+
+Add a **Core/Value** card and name it **MRR**. This is the number the map is about.
+
+## 3. Add the drivers
+
+Add three **Data/Metric** cards: **New MRR**, **Expansion MRR**, and **Churned MRR**.
+These are the inputs that move the outcome.
+
+## 4. Connect them
+
+Draw a **relationship** from each driver to **MRR**. When you create a link you
+choose its type — for now use **Causal** (the driver is understood to cause a
+change in the outcome). The four relationship types are covered in
+[Concepts → Canvases](/docs/concepts/canvases).
+
+Your canvas now reads: *New, Expansion, and Churn drive MRR.*
+
+## 5. Put a number on it
+
+Click the **MRR** card and add a value for last month — say `124000` for the period
+`2026-06`. The card now shows a data point. Later you can connect a data source or
+push values from your own pipeline so this updates automatically
+(see [Reference → API](/docs/reference/api) and
+[Reference → Connectors](/docs/reference/connectors)).
+
+## What you built
+
+You now have a canvas with an outcome, three drivers, typed relationships, and a
+real value — the smallest complete metric map. Everything else in Canvasm builds
+on these pieces.
+
+## Next steps
+
+<Cards>
+  <Card title="Understand the model" href="/docs/concepts" description="Canvases, metrics, dashboards, and strategy — in plain language." />
+  <Card title="Learn the workflow" href="/docs/learn/metric-mapping-basics" description="Go from a business goal to a full metric tree." />
+  <Card title="Connect real data" href="/docs/reference/connectors" description="Bring numbers in automatically instead of typing them." />
+</Cards>
