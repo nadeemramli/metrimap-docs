@@ -1,11 +1,58 @@
 ---
 title: "Troubleshooting"
-description: "Common errors and how to resolve them."
-owner: content (CVS-296)
+description: "Common errors connecting agents, using API keys, importing data, and access — and how to fix them."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-296)" priority="P2">
-Common connect/import/permission errors and fixes.
-</Stub>
+Quick fixes for the issues people hit most. If something here doesn't match what you
+see, [report it](https://github.com/nadeemramli/metrimap-docs/issues).
+
+## My agent can't connect over MCP
+
+- Confirm the URL is exactly `https://mcp.canvasm.app/mcp`.
+- For CLI/Codex clients, make sure you're sending
+  `Authorization: Bearer <YOUR_KEY>` — a missing or malformed header is the usual
+  cause.
+- For claude.ai / Desktop, use the sign-in flow rather than a pasted key.
+- Regenerate the key in **Settings → Connect your agent** if you're unsure it's valid.
+
+## My API key returns an auth error
+
+- The key is sent as `x-api-key: mk_live_…` — check for a stray space or a truncated
+  copy (keys are shown only once).
+- A revoked key stops working immediately; generate a new one in **Workspace Settings →
+  API keys**.
+- Requests are scoped to the key's workspace — a metric in another workspace won't be
+  found.
+
+## I pushed values but don't see them
+
+- The metric must be **catalogued** (a tracked metric) before the API will accept its
+  values — promote the card first (see [Metrics & sources](/docs/concepts/metrics-and-sources)).
+- Check the **period** format (e.g. `2026-06`) and that you used the metric's exact
+  name or id.
+- Values attach to the tracked metric and appear on **every** canvas referencing it —
+  make sure you're looking at a widget or card bound to that metric.
+
+## A teammate can't see a metric
+
+- This is almost always **visibility**, not a bug: the card carries an
+  [access tag](/docs/reference/security-access) whose audience doesn't include their
+  group. Add their group to the tag's audience, or use **"view as" their group** to
+  confirm.
+- Remember roles and visibility are separate — an Editor still won't see restricted
+  cards.
+
+## A native connector isn't available
+
+- Native connectors are [rolling out](/docs/reference/connectors); most sources aren't
+  live yet. Use **agent/API push** for that source in the meantime.
+
+## Next steps
+
+<Cards>
+  <Card title="Connect an agent" href="/docs/reference/mcp" description="Set up MCP correctly." />
+  <Card title="Security & access" href="/docs/reference/security-access" description="Understand visibility." />
+</Cards>

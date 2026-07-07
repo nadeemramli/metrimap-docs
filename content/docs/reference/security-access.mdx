@@ -1,11 +1,74 @@
 ---
 title: "Security & access"
-description: "Roles, groups, access tags, visibility, sharing, and redaction."
-owner: content (CVS-296)
+description: "Roles, groups, access tags, node visibility, sharing, and redaction — and how they combine."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-296)" priority="P1">
-Access tiers (Viewer/Commenter/Editor/Admin), groups × access tags visibility. No internals.
-</Stub>
+Access in Canvasm has two layers: **roles** (what you can do) and **visibility** (which
+cards you can see). Both are enforced on the server for every request, including shares
+and API/agent calls.
+
+## Workspace isolation
+
+All data — canvases, metrics, connected accounts, keys — is scoped to a **workspace**.
+Requests can only reach the workspace they're authenticated for; there is no
+cross-workspace access. API keys and agent connections inherit exactly this scope.
+
+## Roles
+
+| Role | Capability |
+|---|---|
+| **Viewer** | Read permitted canvases and dashboards |
+| **Commenter** | Viewer + leave comments |
+| **Editor** | Build and change canvases, metrics, dashboards |
+| **Admin** | Editor + manage members, groups, and access policy |
+
+## Visibility: groups and access tags
+
+Roles don't decide *which numbers* you see — access tags do:
+
+- A **group** is an audience of people (Finance, Exec, Marketing, a partner).
+- An **access tag** marks sensitive cards and defines an **audience**: the groups
+  allowed to see them.
+- A card with a restricted tag is visible only to that tag's audience. Everyone else
+  simply doesn't see it.
+
+Admins can **"view as" a group** to preview exactly what that audience sees.
+
+<Callout title="Two layers combine">
+  An Editor can change the canvas but still won't see a card whose access tag excludes
+  their group. Capability and visibility are independent — you need both.
+</Callout>
+
+## Sharing and redaction
+
+When a canvas, dashboard, or shared link is opened by someone outside a card's
+audience, that card is **redacted** — removed from the response and any embed, not just
+hidden in the browser. Nothing restricted leaks through a share. Owners see a
+*"N restricted metrics are hidden for this audience"* affordance so they know what a
+given viewer gets. Shared and embedded views honor the same visibility as the app, and
+work alongside the Viewer/Commenter/Editor roles.
+
+## Keys and credentials
+
+- **API keys** are shown once and stored only as a hash; revoke one and it stops
+  working immediately.
+- **Connected-account credentials** (for native connectors) are stored encrypted on
+  the server; the browser only ever sees a connection's status, never token material.
+
+## Proxy departments (planned)
+
+<Callout type="info" title="Planned">
+  A **proxy department / scope** layer — named proxies you assign to dashboards,
+  groups, and cards with inheritance and overrides — is planned. Today, express
+  visibility directly with groups and access tags.
+</Callout>
+
+## Next steps
+
+<Cards>
+  <Card title="Group to dashboard" href="/docs/product-system/group-to-dashboard" description="How visibility becomes per-team views." />
+  <Card title="Share views" href="/docs/guides/share-views" description="Share safely, step by step." />
+</Cards>

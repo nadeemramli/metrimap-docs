@@ -1,11 +1,71 @@
 ---
 title: "Data model"
-description: "Reference terms: metrics, sources, dashboards, evidence, and strategy impact."
-owner: content (CVS-296)
+description: "A glossary of the core Canvasm objects: canvases, cards, metrics, dashboards, strategy, and access."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-296)" priority="P1">
-Glossary/reference of core objects and their relationships (no internals).
-</Stub>
+A quick reference to the objects and terms used across Canvasm. For the narrative
+version, see [Concepts](/docs/concepts).
+
+## Structure
+
+| Term | Definition |
+|---|---|
+| **Workspace** | Your team's account and the boundary for all data, metrics, and keys. |
+| **Canvas** | One metric map. |
+| **Card** | A node on a canvas. Every card has a **category**. |
+| **Category** | The kind of card: **Core/Value**, **Data/Metric**, **Work/Action**, **Ideas/Hypothesis**, **Metadata**. |
+| **Relationship** | A typed link between two cards. |
+| **Relationship type** | **Deterministic**, **Compositional**, **Causal**, or **Probabilistic** — with optional confidence, weight, and notes. |
+| **Group** | A visual (and visibility) grouping of cards on a canvas. |
+
+## Metrics & values
+
+| Term | Definition |
+|---|---|
+| **Tracked metric** | A card promoted into the workspace **catalog**, owning a value series shared across canvases. |
+| **Value series** | Period → value pairs for a tracked metric. |
+| **Period** | The time bucket for a value, usually a month like `2026-06`. |
+| **Source-backed value** | A value brought in from a connector, the API, or an agent. |
+| **Calculated value** | A value derived on the canvas from other cards. |
+| **Lineage** | The origin and observation time recorded on a source-backed value. |
+
+## Dashboards
+
+| Term | Definition |
+|---|---|
+| **Dashboard** | The reviewable view for a canvas, made of widgets. |
+| **Widget** | A chart (line/area/bar/pie), a KPI (single number), or a table. |
+| **Widget source** | Where a widget's series comes from: a **tracked metric** or a **card**. |
+| **Impact badge** | A marker on a metric widget showing linked strategy items and their status. |
+
+## Strategy & impact
+
+| Term | Definition |
+|---|---|
+| **Impact contract** | The measurable statement carried by an Action or Hypothesis card. |
+| **Metric link role** | **Target**, **leading**, or **guardrail** — how a metric relates to a bet. |
+| **Expected direction** | **increase**, **decrease**, or **stabilize**. |
+| **Baseline window** | The "before" period a result is compared against. |
+| **Measurement window** | The period a result is judged over. |
+| **Confidence** | **low**, **medium**, or **high**. |
+| **Impact status** | **draft → planned → measuring → won / lost / inconclusive**. |
+
+## Evidence & access
+
+| Term | Definition |
+|---|---|
+| **Evidence** | Proof attached to a card or relationship. Types: **Experiment**, **Analysis**, **Notebook**, **External Research**, **User Interview**. |
+| **Role** | Workspace capability: **Viewer**, **Commenter**, **Editor**, **Admin**. |
+| **Group / audience** | A named set of people used in visibility decisions. |
+| **Access tag** | A marker on cards whose audience decides which groups may see them. |
+| **Redaction** | Removing cards a viewer isn't permitted to see from a view or share. |
+
+## Next steps
+
+<Cards>
+  <Card title="Concepts" href="/docs/concepts" description="These terms in context." />
+  <Card title="Security & access" href="/docs/reference/security-access" description="The access terms, in depth." />
+</Cards>

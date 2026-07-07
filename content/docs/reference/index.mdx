@@ -1,11 +1,39 @@
 ---
 title: "Reference"
-description: "Exact integration details for users and agents: MCP, API, connectors, data model, access."
-owner: content (CVS-296)
+description: "Exact integration details for people and agents: MCP, API, connectors, data model, and access."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-296)" priority="P1">
-Reference landing; note Current vs Planned convention.
-</Stub>
+The reference section is for when you need precise details — connecting an agent,
+pushing values, or understanding the access model. Concepts and guides explain the
+*why*; this section is the *exactly how*.
+
+## What's here
+
+<Cards>
+  <Card title="MCP / agent connection" href="/docs/reference/mcp" description="Connect Claude, Codex, or any HTTP MCP client to build and populate your maps." />
+  <Card title="API & auth" href="/docs/reference/api" description="Read and write tracked-metric values programmatically." />
+  <Card title="Connectors" href="/docs/reference/connectors" description="Native connectors and the canonical data model." />
+  <Card title="Data model" href="/docs/reference/data-model" description="A glossary of the core objects and terms." />
+  <Card title="Security & access" href="/docs/reference/security-access" description="Roles, groups, access tags, sharing, and redaction." />
+  <Card title="Troubleshooting" href="/docs/reference/troubleshooting" description="Common errors and how to fix them." />
+</Cards>
+
+## Current vs Planned
+
+Reference pages label maturity so you never build on something that isn't there yet:
+
+<Callout title="Current">
+  Available today. Details here describe shipped behavior.
+</Callout>
+
+<Callout type="info" title="Planned">
+  On the roadmap, not yet available. Documented so you can plan, but don't build
+  against it until it's marked Current.
+</Callout>
+
+## Next step
+
+Most integrations start by [connecting an agent over MCP](/docs/reference/mcp).
