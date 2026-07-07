@@ -1,11 +1,69 @@
 ---
 title: "API & auth"
-description: "Programmatic read/write of metric values and authentication."
-owner: content (CVS-296)
+description: "Read and write tracked-metric values programmatically with a workspace API key."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-296)" priority="P1">
-Metrics read/write API, API keys; mark public REST API as Planned where not shipped.
-</Stub>
+Use the API to make Canvasm a node in your data pipeline — push metric values in, or
+read them back out — without an agent. All access is scoped to your workspace by an
+API key.
+
+## Authentication
+
+Generate a key in the app under **Workspace Settings → API keys**. The full key
+(prefixed `mk_live_…`) is shown **once**; only a hash is stored, so copy it then.
+Send it as a header on every request:
+
+```
+x-api-key: mk_live_xxxxxxxx…
+```
+
+The exact request URL for your workspace is shown alongside the key in-app. Keys can be
+**revoked** anytime, which stops them working immediately.
+
+## Write values
+
+Upsert a **tracked metric's** value series by period. The metric must already exist in
+your [catalog](/docs/concepts/metrics-and-sources) (promote a card first).
+
+```bash
+curl -X POST "<your-metrics-endpoint>" \
+  -H "x-api-key: $CANVASM_KEY" \
+  -H "content-type: application/json" \
+  -d '{ "metric": "MRR", "values": [ { "period": "2026-06", "value": 124000 } ] }'
+# -> { "ok": true, "written": 1 }
+```
+
+Values upsert on `(metric, period)` and are tagged as coming from the API, so a
+re-run corrects rather than duplicates.
+
+## Read values
+
+```bash
+curl "<your-metrics-endpoint>?metric=MRR" -H "x-api-key: $CANVASM_KEY"
+# -> { "metric": { ... }, "values": [ { "period": "2026-06", "value": 124000 } ] }
+```
+
+`metric` accepts the tracked metric's **name** or its id, within the key's workspace.
+
+## Notes
+
+- Writes go to the shared value store, so a value shows on **every** canvas that
+  references the metric.
+- The API reads and writes **values**; it doesn't create metrics — catalog the metric
+  in the app (or via an [agent over MCP](/docs/reference/mcp)) first.
+
+<Callout type="info" title="Planned">
+  A broader public REST API (canvases, cards, relationships, dashboards) and per-key
+  scopes are on the roadmap. Today the HTTP API covers tracked-metric values; for
+  building structure, use the [MCP tools](/docs/reference/mcp).
+</Callout>
+
+## Next steps
+
+<Cards>
+  <Card title="Connect an agent" href="/docs/reference/mcp" description="Build structure, not just values." />
+  <Card title="Metrics & sources" href="/docs/concepts/metrics-and-sources" description="How values and periods work." />
+</Cards>

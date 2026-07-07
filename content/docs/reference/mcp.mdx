@@ -1,11 +1,78 @@
 ---
 title: "MCP / agent connection"
-description: "Connect your agent (Claude, Codex) to Canvasm over MCP."
-owner: content (CVS-296)
+description: "Connect your agent (Claude, Codex, any HTTP MCP client) to Canvasm to build and populate metric maps."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-296)" priority="P1">
-MCP server URL, auth (API key + OAuth), tool list, example session. Current vs Planned.
-</Stub>
+Canvasm runs a remote **MCP server** so your own agent can build and populate your
+metric maps. Every tool call runs under **your** account — your access, your
+visibility — and Canvasm never uses a shared admin key on your behalf.
+
+<Callout title="Current">
+  The MCP server is available at `https://mcp.canvasm.app/mcp`.
+</Callout>
+
+## Authentication
+
+Two ways to connect, depending on your client:
+
+- **API key (CLI / Codex / any HTTP client).** Generate a key in the app under
+  **Settings → Connect your agent**, then send it as
+  `Authorization: Bearer <YOUR_KEY>`. The key is shown once — copy it then.
+- **Sign-in (claude.ai / Claude Desktop connectors).** Add the server URL and sign in
+  when prompted; the connector authenticates you without a pasted key.
+
+Whichever you use, calls are scoped to your account and can be revoked anytime by
+removing the key in the app.
+
+## Add the server
+
+**Claude Code / CLI:**
+
+```bash
+claude mcp add --transport http canvasm https://mcp.canvasm.app/mcp \
+  --header "Authorization: Bearer <YOUR_KEY>"
+```
+
+**claude.ai / Claude Desktop:** add a custom connector pointing at
+`https://mcp.canvasm.app/mcp` and sign in (or set the `Authorization` header).
+
+**Codex / other MCP clients:** point them at the same URL with the same header.
+
+## What the agent can do
+
+The server exposes tools to read and build maps. A typical build session:
+
+1. `list_canvases` / `get_tree` — see what already exists (so the agent extends
+   rather than duplicates).
+2. `create_canvas` — start a map.
+3. `create_value`, `create_metric`, `create_driver_node`, `create_action` — add cards.
+4. `create_relationship` — link them (Deterministic / Compositional / Causal /
+   Probabilistic).
+5. `layout_tree` — tidy the layout so it renders well.
+6. `push_values` (or stage/upload then materialize) — put real numbers on the map.
+
+There are also tools for updating and deleting cards, canvases, and relationships, and
+for attaching evidence. Ask your agent to "list available Canvasm tools" to see the
+current set — the server advertises them via MCP.
+
+<Callout title="Tip">
+  Have the agent call `get_tree` first so it builds on your existing map instead of
+  creating duplicate cards.
+</Callout>
+
+## Limits & safety
+
+- Calls are **rate-limited** per key and **payload-capped**.
+- Keys are **read + write** by default. Finer per-key scopes are _planned_.
+- Every call runs under your account's access and visibility — an agent can't reach
+  data you can't.
+
+## Next steps
+
+<Cards>
+  <Card title="API & auth" href="/docs/reference/api" description="Push values without an agent." />
+  <Card title="Data model" href="/docs/reference/data-model" description="The objects these tools create." />
+</Cards>

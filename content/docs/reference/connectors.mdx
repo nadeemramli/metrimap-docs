@@ -1,11 +1,55 @@
 ---
 title: "Connectors"
-description: "Native connectors and canonical schemas for bringing data in."
-owner: content (CVS-296)
+description: "How data comes into Canvasm — agent/API push today, native connectors rolling out."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-296)" priority="P1">
-Connector model, canonical schemas, connected accounts; GA4 status (Current vs Planned).
-</Stub>
+Canvasm keeps a metric map honest by feeding it real numbers. There are two paths in,
+and they share one data model.
+
+## Two ways to bring data in
+
+- **Agent / API push — Current.** Your agent (over [MCP](/docs/reference/mcp)) or your
+  pipeline (over the [API](/docs/reference/api)) fetches data wherever it lives and
+  pushes values into Canvasm. Available today and the most flexible path.
+- **Native connectors — Planned / rolling out.** Canvasm connects directly to a source,
+  fetches on a schedule, and normalizes the data for you. Rolling out source by source.
+
+## One canonical data model
+
+Both paths validate against the same **canonical schemas**, so metric logic isn't
+reinvented per integration. The schema families at launch cover:
+
+- **Payments** — payment, refund, payout, subscription, invoice
+- **Commerce** — order, order line item, product, customer
+- **Analytics** — event, page metric, funnel step, cohort
+
+A canonical record carries where it came from, when it happened, and its typed fields,
+which is what gives every source-backed value its
+[lineage](/docs/concepts/metrics-and-sources#lineage).
+
+## Native connector status
+
+<Callout type="info" title="Planned">
+  **Google Analytics 4** is the first native connector and is in setup. Additional
+  sources (payments, commerce, product analytics) are planned and will light up as
+  each connector ships. Until a connector is marked Current, use agent/API push for
+  that source.
+</Callout>
+
+## Connecting an account (how it will work)
+
+When native connectors are available, you'll connect a source under **Connected
+accounts** in settings: authorize with the provider (OAuth) or enter an API key, and
+Canvasm stores those credentials securely on the server — the browser only ever sees a
+connection's **status**, never the tokens. Canvasm then fetches on a schedule and
+maps the results onto your metrics.
+
+## Next steps
+
+<Cards>
+  <Card title="Push values now" href="/docs/reference/api" description="Don't wait for a native connector." />
+  <Card title="Connect an agent" href="/docs/reference/mcp" description="Let an agent pull and push for you." />
+</Cards>
