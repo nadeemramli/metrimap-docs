@@ -1,11 +1,58 @@
 ---
 title: "Strategy & impact"
-description: "Objectives, hypotheses/actions, impact contracts, baselines, and guardrails."
-owner: content (CVS-293)
+description: "Objectives, hypotheses and actions, impact contracts, baselines, and guardrails."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-293)" priority="P1">
-Objectives → hypotheses/actions → impact contracts (target/leading/guardrail metrics), baselines, guardrails.
-</Stub>
+Canvasm connects the work you do to the numbers it should move. That connection is
+made explicit through **strategy cards** and the **impact contract** they carry.
+
+## Objectives, hypotheses, and actions
+
+- An **objective** is what you're trying to achieve (grow MRR).
+- A **hypothesis** (Ideas/Hypothesis card) is a bet about how to get there
+  ("annual plans lift expansion revenue").
+- An **action** (Work/Action card) is the work itself ("ship annual billing").
+
+## The impact contract
+
+Any action or hypothesis can carry an **impact contract** — a small, measurable
+statement of the bet:
+
+- **Metric links**, each with a role:
+  - **Target** — the metric you mainly intend to move.
+  - **Leading** — an earlier signal you expect to move first.
+  - **Guardrail** — a metric that must *not* get worse.
+- **Expected direction** — increase, decrease, or stabilize.
+- **Expected change** — an optional size, e.g. "+3,000 / month".
+- **Baseline window** — the period you measure "before" from.
+- **Measurement window** — the period you'll judge the result over.
+- **Confidence** — low, medium, or high.
+- **Status** — draft → planned → measuring → and finally won, lost, or inconclusive.
+
+<Callout title="Example">
+  *Action:* Ship annual billing. **Target:** Expansion MRR (increase, +3,000/mo).
+  **Leading:** annual-plan adoption. **Guardrail:** churn rate (must not rise).
+  Baseline May 2026; measure Jul–Sep 2026; confidence medium.
+</Callout>
+
+## Baselines and guardrails
+
+The **baseline** is the "before" you compare against, so a win is measured, not
+claimed. **Guardrails** keep a bet honest — a change that hits its target but breaks
+a guardrail isn't a win. Both are part of the contract, not an afterthought.
+
+## Where you see it
+
+Linked strategy work shows up as [impact badges](/docs/concepts/dashboards) on
+dashboard metric widgets, so a review answers "what bets are on this metric, and are
+they working?"
+
+## Next steps
+
+<Cards>
+  <Card title="Impact contracts (deep dive)" href="/docs/product-system/impact-contracts" description="Every field, and how measurement works." />
+  <Card title="Strategy breakdown" href="/docs/learn/strategy-breakdown" description="Turn an objective into linked bets." />
+</Cards>

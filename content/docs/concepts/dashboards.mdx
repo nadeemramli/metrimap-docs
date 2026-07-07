@@ -1,11 +1,57 @@
 ---
 title: "Dashboards"
-description: "Widgets, views, reviews, and audience-specific dashboards."
-owner: content (CVS-293)
+description: "Widgets, views, review, and audience-specific dashboards built from your metrics."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-293)" priority="P1">
-Widgets (chart/KPI/table), per-group dashboards, review cadence, and audience views.
-</Stub>
+A **dashboard** turns the metrics on a canvas into something you review. Each canvas
+has a dashboard, composed of **widgets**.
+
+## Widgets
+
+A **widget** shows one or more metric series. Types:
+
+- **Chart** — line, area, bar, or pie over time.
+- **KPI** — a single headline number (e.g. current MRR).
+- **Table** — periods and values in a grid.
+
+A widget draws its series from either a **tracked metric** (shared, catalogued) or a
+**card** on the canvas. Arrange widgets to answer a question at a glance — for the
+subscription business, a dashboard might pair an *MRR* KPI with a *New vs Churned MRR*
+line chart.
+
+## Impact badges: what's being done about a metric
+
+A dashboard shows *what* is happening; Canvasm also shows *what bets are active* on a
+metric. Metric widgets carry **impact badges** — a compact count and status of the
+[Strategy](/docs/concepts/strategy-impact) actions and hypotheses linked to that
+metric. Open the badge to see each linked item's owner, expected change,
+measurement window, and current status, and jump to its impact trace.
+
+<Callout title="Why this matters">
+  Reviewing a flat number tells you it moved. Reviewing a number *with its linked
+  bets* tells you whether your work is what moved it.
+</Callout>
+
+## Audience-specific views
+
+Dashboards and shared views can be scoped to an **audience** so they only surface
+metrics that audience is allowed to see. The same canvas can therefore power a
+finance view, an exec view, and an external-partner view — each showing only its
+permitted numbers. See [Group to dashboard](/docs/product-system/group-to-dashboard)
+and [Groups & visibility](/docs/concepts/groups-and-visibility).
+
+## Review cadence
+
+Dashboards are where the weekly/monthly **review** happens: read the numbers, check
+the guardrails, and note what you learned. The [Learn track](/docs/learn/dashboard-cadence)
+walks through a review rhythm.
+
+## Next steps
+
+<Cards>
+  <Card title="Build dashboards" href="/docs/guides/build-dashboards" description="Compose widgets into a view." />
+  <Card title="Strategy & impact" href="/docs/concepts/strategy-impact" description="What those impact badges are linked to." />
+</Cards>

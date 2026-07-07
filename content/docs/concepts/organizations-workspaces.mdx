@@ -1,11 +1,50 @@
 ---
 title: "Organizations & workspaces"
-description: "Account containers, team access, and project boundaries in Canvasm."
-owner: content (CVS-293)
+description: "The account container your canvases and team live in, and how team access works."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-293)" priority="P1">
-Explain the workspace as the account/tenant boundary, membership, and where canvases live.
-</Stub>
+A **workspace** is your team's account in Canvasm. It's the top-level container:
+everything you build — canvases, metrics, dashboards, connected data — belongs to
+one workspace, and access is decided at the workspace level.
+
+## What a workspace holds
+
+- **Canvases** — your metric maps (see [Canvases](/docs/concepts/canvases)).
+- **The metric catalog** — tracked metrics and their value series, shared across
+  canvases in the workspace (see [Metrics & sources](/docs/concepts/metrics-and-sources)).
+- **Members** — the people on your team, each with a role.
+- **Connected data & API keys** — connectors and keys are scoped to the workspace,
+  so data never crosses between workspaces.
+
+## Team access: roles
+
+Every member has a workspace **role** that sets what they can do:
+
+| Role | Can do |
+|---|---|
+| **Viewer** | Read canvases and dashboards they're permitted to see |
+| **Commenter** | Everything a Viewer can, plus leave comments |
+| **Editor** | Build and change canvases, metrics, and dashboards |
+| **Admin** | Everything, plus manage members, groups, and access policy |
+
+Roles decide **what you can do**. *Which specific metrics* you can see is a separate,
+finer layer — see [Groups & visibility](/docs/concepts/groups-and-visibility).
+
+<Callout title="Roles vs visibility">
+  A person can be an Editor and still not see every number: role controls
+  capability, visibility controls which cards are shown. The two combine.
+</Callout>
+
+## Project boundaries
+
+Because data, metrics, and keys are workspace-scoped, a workspace is a clean
+boundary for a company or a business unit. If you run genuinely separate
+businesses, use separate workspaces.
+
+## Next steps
+
+Learn the thing you'll spend the most time in: the [Canvas](/docs/concepts/canvases).
+To manage who sees what, read [Groups & visibility](/docs/concepts/groups-and-visibility).
