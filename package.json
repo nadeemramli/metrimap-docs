@@ -1,0 +1,37 @@
+{
+  "name": "metrimap-docs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Public documentation for Canvasm (Metrimap) — docs.canvasm.app",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev --port 3001",
+    "start": "next start --port 3001",
+    "type-check": "fumadocs-mdx && next typegen && tsc --noEmit",
+    "types:check": "fumadocs-mdx && next typegen && tsc --noEmit",
+    "postinstall": "fumadocs-mdx",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "cnfast": "^0.0.8",
+    "fumadocs-core": "16.11.1",
+    "fumadocs-mdx": "15.1.0",
+    "fumadocs-ui": "npm:@fumadocs/base-ui@16.11.1",
+    "lucide-react": "^1.23.0",
+    "next": "16.2.10",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.2",
+    "@types/mdx": "^2.0.14",
+    "@types/node": "^26.1.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "postcss": "^8.5.16",
+    "tailwindcss": "^4.3.2",
+    "typescript": "^6.0.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "16.2.10"
+  }
+}
