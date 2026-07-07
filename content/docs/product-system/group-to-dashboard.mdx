@@ -1,11 +1,58 @@
 ---
 title: "Group to dashboard"
-description: "How groups/audiences map to dashboard/canvas views and visibility policy."
-owner: content (CVS-295)
+description: "How groups and audiences map to dashboard and canvas views through a visibility policy."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-295)" priority="P1">
-Groups/audiences → dashboards + visibility policy (access tags).
-</Stub>
+Group-to-dashboard is the loop that turns **who someone is** into **what they see** —
+so one canvas can serve every team without leaking restricted numbers.
+
+## The flow
+
+```
+Groups (audiences)  ──▶  Access tags  ──▶  Visibility policy  ──▶  Dashboard / canvas view
+Finance, Exec,           tag → audience     which cards this        scoped to permitted
+Marketing, Partner       (allowed groups)   viewer may see          metrics only
+```
+
+1. **Groups** define your audiences at the workspace level.
+2. **Access tags** mark sensitive cards and give each tag an **audience** — the groups
+   allowed to see those cards.
+3. The **visibility policy** resolves, for a given viewer, exactly which cards are
+   permitted.
+4. A **dashboard or shared view** is assigned an audience and auto-filters to that
+   audience's permitted metrics.
+
+## One canvas, many operating views
+
+Because visibility resolves per viewer, the same canvas powers a Finance view (margin
+and cost), a Marketing view (funnel), and an Exec view (both) — no duplicate canvases,
+no divergent copies.
+
+## Sharing honors the policy
+
+A [shared](/docs/guides/share-views) link or embed applies the same policy: cards
+outside the viewer's audience are **redacted** — removed from the view, not merely
+hidden client-side — so a share can't leak a restricted metric. Owners see a
+*"N restricted metrics hidden for this audience"* affordance to confirm what a given
+audience will see. This works alongside the Viewer/Commenter/Editor roles.
+
+## Proxy departments (planned)
+
+<Callout type="info" title="Planned">
+  A **proxy department / scope** layer is planned: named proxies (Finance, Exec,
+  Board View, Region A, External Partner) that you assign to dashboards, canvas
+  groups, and individual cards, with default inheritance and per-card overrides, all
+  resolving deterministically to allowed audiences. Until it ships, express visibility
+  directly with groups and access tags.
+</Callout>
+
+## Next steps
+
+<Cards>
+  <Card title="Groups & visibility (concept)" href="/docs/concepts/groups-and-visibility" description="The building blocks in plain language." />
+  <Card title="Security & access reference" href="/docs/reference/security-access" description="The access model, precisely." />
+  <Card title="Share views" href="/docs/guides/share-views" description="Share safely, hands-on." />
+</Cards>

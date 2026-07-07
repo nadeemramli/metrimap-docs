@@ -1,11 +1,60 @@
 ---
 title: "Impact contracts"
-description: "Expected direction, baseline window, measurement window, confidence, and evidence."
-owner: content (CVS-295)
+description: "The measurable statement a strategy card carries: direction, baseline and measurement windows, confidence, status, and evidence."
+owner: docs
 status: draft
 lastReviewed: 2026-07-08
 ---
 
-<Stub owner="content (CVS-295)" priority="P1">
-The impact contract fields: direction, baseline/measure windows, confidence, status, evidence.
-</Stub>
+An **impact contract** is the small, checkable statement attached to a Work/Action or
+Ideas/Hypothesis card. It turns "we think this will help" into something you can judge.
+
+## The fields
+
+| Field | What it captures |
+|---|---|
+| **Metric links** | The metrics this bet touches, each with a role: **target**, **leading**, or **guardrail**. A link points at a tracked metric or a card. |
+| **Expected direction** | **increase**, **decrease**, or **stabilize** — what "good" looks like for the target. |
+| **Expected change** | Optional size and unit, e.g. `+3,000 / month`. |
+| **Baseline window** | The "before" period the result is compared against. |
+| **Measurement window** | The period over which the result is judged. |
+| **Confidence** | **low**, **medium**, or **high** — how sure you are up front. |
+| **Status** | The lifecycle: **draft → planned → measuring → won / lost / inconclusive**. |
+| **Owner & result note** | Who owns the bet, and the short write-up of what happened. |
+
+## Reading a contract
+
+```
+Action: Ship annual billing
+  Target      Expansion MRR    increase  +3,000 / month
+  Leading     Annual-plan adoption       increase
+  Guardrail   Churn rate                 must not rise
+  Baseline    2026-05        Measure  2026-07 … 2026-09
+  Confidence  medium         Status   measuring
+```
+
+## How measurement works
+
+1. Set a **baseline** from the before-window so a result is measured, not claimed.
+2. While the **measurement window** is open, the contract is **measuring**.
+3. When it closes, compare the target's movement to the expected direction and change:
+   - moved as expected, guardrails intact → **won**
+   - didn't move (or a guardrail broke) → **lost**
+   - too noisy to tell → **inconclusive**
+4. Record a **result note** and attach [evidence](/docs/product-system/evidence-and-governance).
+
+<Callout title="Guardrails can veto a win">
+  Hitting the target while breaking a guardrail is not a win. Judge target and
+  guardrail together.
+</Callout>
+
+## Why the windows matter
+
+Without an explicit baseline and measurement window, every result is arguable. The
+windows make the bet falsifiable — the difference between a metrics tool and a
+scoreboard.
+
+## Next step
+
+See it in a full workflow: [Build a growth map](/docs/learn/example-growth-map), or go
+back to [Strategy to impact](/docs/product-system/strategy-to-impact).
