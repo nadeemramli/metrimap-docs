@@ -1,0 +1,50 @@
+name: Docs drift check
+
+# Weekly "are the docs still in sync with the app?" agent.
+# Runs the playbook in docs/automation/docs-drift-check.md headless with Claude Code,
+# reads app changes via the `gh` CLI, and files/updates a `docs-drift` GitHub issue.
+#
+# Setup (one-time, owner):
+#   Repo Settings → Secrets and variables → Actions → New repository secret
+#     ANTHROPIC_API_KEY = <your Anthropic API key>
+# Then test immediately via the "Run workflow" button (workflow_dispatch) below.
+
+on:
+  schedule:
+    # Mondays 08:17 UTC (off-minute on purpose; GitHub cron is always UTC).
+    - cron: '17 8 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read      # read this repo's docs content
+  issues: write       # create/update the docs-drift issue
+
+concurrency:
+  group: docs-drift
+  cancel-in-progress: false
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout docs
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Run docs-drift check
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # GITHUB_TOKEN can read the public app repo and write issues on this repo.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          claude -p "Follow the playbook in docs/automation/docs-drift-check.md exactly. Report only; do not edit any files." \
+            --model claude-opus-4-8 \
+            --allowedTools "Bash(gh:*),Bash(date:*),Bash(grep:*),Read,Grep,Glob" \
+            --output-format text
