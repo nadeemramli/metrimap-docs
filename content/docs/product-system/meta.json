@@ -1,0 +1,5 @@
+{
+  "title": "Product System",
+  "icon": "Workflow",
+  "pages": ["index", "strategy-to-impact", "impact-contracts", "group-to-dashboard", "evidence-and-governance"]
+}

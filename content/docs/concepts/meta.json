@@ -1,0 +1,5 @@
+{
+  "title": "Concepts",
+  "icon": "Shapes",
+  "pages": ["index", "organizations-workspaces", "canvases", "metrics-and-sources", "dashboards", "strategy-impact", "groups-and-visibility"]
+}

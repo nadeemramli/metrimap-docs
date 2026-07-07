@@ -1,0 +1,5 @@
+{
+  "title": "Reference",
+  "icon": "BookText",
+  "pages": ["index", "mcp", "api", "connectors", "data-model", "security-access", "troubleshooting"]
+}
